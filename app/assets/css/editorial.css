@@ -1,0 +1,304 @@
+/* =================================================================
+   ÉDITORIAL — couche de style de l'identité Smart Campus DZ
+   Chargée en dernier. Ne modifie ni le HTML, ni le JS, ni les routes.
+   Papier ivoire · vert campus · sauge · or sourd · Amiri + Noto Sans Arabic
+   ================================================================= */
+
+/* ---------- 1. Fondations typographiques ---------- */
+body {
+  font-family: var(--font-default);
+  font-size: 16px;
+  line-height: 1.55;
+  color: var(--c-ink);
+  background: var(--c-bg);
+}
+p { max-width: 72ch; }
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--c-ink);
+}
+h1 { font-size: clamp(2rem, 3.4vw, 3rem); }
+h2 { font-size: clamp(1.75rem, 2.6vw, 2.25rem); }
+h3 { font-size: 1.5rem; }
+h4 { font-size: 1.25rem; }
+h5, h6 { font-family: var(--font-body, var(--font-default)); letter-spacing: 0; text-transform: none; color: var(--c-ink-soft); }
+.display { font-family: var(--font-display); font-weight: 700; font-size: clamp(2.75rem, 4.6vw, 4.25rem); line-height: 1; }
+
+/* Étiquettes : phrase lisible, pas de petites capitales espacées */
+.eyebrow, .u-eyebrow, .hero__eyebrow, .section-header__eyebrow, .page-header__eyebrow {
+  display: none !important;
+}
+
+/* Pas de filets décoratifs ni de dégradés */
+hr, .u-divider, .divider, .hero::after { display: none !important; }
+.hero::before { display: none !important; }
+.skeleton { background: var(--c-surface-alt); animation: none; }
+*, *::before, *::after { backdrop-filter: none !important; -webkit-backdrop-filter: none !important; }
+
+a { color: var(--c-primary); text-decoration-thickness: 2px; text-underline-offset: 4px; }
+a:hover { color: var(--c-accent); }
+:focus-visible {
+  outline: 3px solid var(--c-accent);
+  outline-offset: 3px;
+  box-shadow: none !important;
+  border-radius: 0;
+}
+
+/* ---------- 2. En-tête public ---------- */
+.site-header {
+  background: var(--c-bg);
+  border-bottom: 2px solid var(--c-primary);
+  box-shadow: none;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+.site-header--scrolled { box-shadow: none; }
+:root[data-theme="dark"] .site-header { background: var(--c-bg); }
+.site-header__inner { max-width: var(--container-wide); }
+.site-header__title { font-family: var(--font-display); font-size: 18px; font-weight: 700; }
+.site-header__title small { font-family: var(--font-default); font-size: 13px; color: var(--c-ink-muted); }
+/* Default site logo (SVG icon) — university seal image removed */
+.site-header__link { font-size: 14px; border-radius: 0; }
+.site-header__link::after { bottom: 2px; height: 3px; }
+.site-header__burger { border-radius: 0; border-color: var(--c-line-strong); }
+.lang-switch__btn { border-radius: 0; }
+.theme-toggle { border-radius: 0; }
+
+/* ---------- 3. Boutons ---------- */
+.btn {
+  border-radius: 0;
+  box-shadow: none;
+  height: var(--btn-h);
+  padding-inline: var(--sp-5);
+  font-weight: 600;
+  font-size: 14px;
+  transition: transform var(--t-fast), background-color var(--t-fast), color var(--t-fast);
+}
+.btn:hover:not(:disabled) { transform: translateY(-2px); }
+.btn--primary { background: var(--c-primary); color: var(--c-ink-on-primary); }
+.btn--primary:hover:not(:disabled) { background: var(--c-primary-hover); }
+.btn--accent { background: var(--c-accent); color: var(--forest-deep, #0B251F); }
+.btn--accent:hover:not(:disabled) { background: var(--c-accent-hover); }
+.btn--secondary { background: var(--c-surface-alt); color: var(--c-ink); }
+.btn--secondary:hover:not(:disabled) { background: var(--c-primary-soft); }
+.btn--ghost { background: transparent; color: var(--c-primary); }
+.btn--ghost:hover:not(:disabled) { background: var(--c-primary-soft); }
+.btn--danger { background: var(--c-danger); color: #fff; }
+.btn--xl { font-size: 15px; }
+.btn-link { font-weight: 600; gap: var(--sp-2); }
+
+/* ---------- 4. Cartes et surfaces ---------- */
+.card {
+  background: var(--c-surface);
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+.card--pad { padding: var(--card-pad); }
+.card--hover:hover, .card--interactive:hover { box-shadow: none; transform: none; }
+.card__header { background: transparent; border-bottom: 0; }
+.card__title { font-family: var(--font-display); font-size: 1.375rem; font-weight: 700; }
+.card__body p { max-width: 70ch; }
+.card__footer { background: var(--c-surface-alt); border-top: 0; }
+.card--featured, .role-banner--admin, .counter--primary { background: var(--c-primary); color: #fff !important; }
+.card--featured *, .role-banner--admin *, .counter--primary * { color: rgba(255, 255, 255, 0.92) !important; }
+.card--featured h3, .card--featured .card__title { color: #fff !important; }
+.card--accent-top::before { background: var(--c-accent); height: 3px; }
+
+/* ---------- 5. Accueil : composition éditoriale ---------- */
+.hero {
+  background: var(--c-bg);
+  padding-block: clamp(48px, 7vw, 104px) clamp(40px, 5vw, 72px);
+  border-bottom: 2px solid var(--c-accent);
+}
+.hero__inner { max-width: var(--container-wide); padding-inline: clamp(18px, 3vw, 40px); gap: clamp(28px, 5vw, 72px); }
+.hero__content { max-width: 720px; }
+.hero__title { font-family: var(--font-display); font-size: clamp(2.75rem, 5vw, 4.25rem); line-height: 1; font-weight: 700; letter-spacing: -0.03em; }
+.hero__subtitle { font-size: 18px; line-height: 1.55; color: var(--c-ink-soft); max-width: 58ch; }
+.hero__actions { gap: var(--sp-3); }
+.hero__stats {
+  gap: clamp(24px, 4vw, 56px);
+  border-top: 0;
+  padding-top: var(--sp-6);
+  margin-top: 96px;
+}
+.hero__stat-value { font-family: var(--font-display); font-size: 36px; color: var(--c-primary); font-weight: 700; }
+.hero__stat-label { font-family: var(--font-default); font-size: 13px; color: var(--c-ink-muted); text-transform: none; letter-spacing: 0; }
+.hero__visual { border-radius: 0; box-shadow: none; aspect-ratio: 4 / 3; }
+.hero__visual::after { display: none; }
+.hero__visual img { filter: saturate(0.85) contrast(1.02); animation: editorial-drift 20s ease-in-out infinite alternate; }
+@keyframes editorial-drift { from { transform: scale(1.02); } to { transform: scale(1.07) translateY(-1%); } }
+.hero__visual-badge {
+  background: var(--c-bg);
+  backdrop-filter: none;
+  border-radius: 0;
+  padding: var(--sp-3);
+}
+:root[data-theme="dark"] .hero__visual-badge { background: var(--c-bg); color: var(--c-ink); }
+
+.section { padding-block: clamp(56px, 7vw, 104px); }
+.section--tight { padding-block: clamp(40px, 5vw, 72px); }
+.section-header { align-items: end; margin-bottom: var(--sp-8); }
+.section-header__title { font-family: var(--font-display); font-size: clamp(1.75rem, 2.6vw, 2.25rem); font-weight: 700; }
+.section-header__subtitle { font-size: 16px; color: var(--c-ink-soft); }
+
+/* Cartes d'accès rapide : planches éditoriales, pas des vignettes d'icônes */
+.quick-card {
+  background: var(--c-surface);
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  padding: var(--sp-5);
+  min-height: 170px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: var(--sp-1);
+}
+.quick-card::before { height: 3px; background: var(--c-accent); }
+.quick-card:hover { box-shadow: none; transform: none; border-color: transparent; }
+.quick-card:hover::before { transform: scaleX(1); }
+.quick-card__icon, .card--interactive .card__body .icon, .card--interactive > .stat-card__icon { display: none !important; }
+.card__media-overlay { background: rgba(11, 37, 31, 0.58) !important; }
+.quick-card__label { font-family: var(--font-display); font-size: 22px; font-weight: 700; }
+.quick-card__hint { font-size: 13px; color: var(--c-ink-muted); }
+
+/* ---------- 6. Espace applicatif ---------- */
+.app-shell { background: var(--c-bg); }
+.app-header {
+  background: var(--c-bg);
+  border-bottom: 2px solid var(--c-primary);
+  box-shadow: none;
+}
+.app-header__title { font-family: var(--font-display); font-weight: 700; }
+.app-sidebar {
+  background: var(--c-primary);
+  color: #fff;
+  border-inline-end: 0;
+}
+.app-sidebar__section { margin-bottom: var(--sp-8); }
+.app-sidebar__label { color: #D8B571; font-size: 14px; letter-spacing: 0; text-transform: none; }
+.app-sidebar__link { color: rgba(255, 255, 255, 0.84); border-radius: 0; font-size: 16px; }
+.app-sidebar__link:hover { background: rgba(255, 255, 255, 0.12); color: #fff; }
+.app-sidebar__link[aria-current="page"] { background: var(--c-accent); color: #0B251F; font-weight: 700; }
+.app-sidebar__link[aria-current="page"]::before { display: none; }
+.app-main { background: var(--c-bg); }
+.page-header__title { font-family: var(--font-display); font-size: clamp(2.25rem, 4.8vw, 4.25rem); font-weight: 700; }
+.page-header__subtitle { color: var(--c-ink-soft); font-size: 16px; }
+.breadcrumb { font-size: 13px; }
+.breadcrumb__current { font-weight: 700; }
+
+/* ---------- 7. Tableaux, formulaires, états ---------- */
+.table-wrap { border: 0; border-radius: 0; }
+.table { border: 0; }
+.table thead th { background: var(--c-primary); color: #fff; border: 0; font-size: 13px; text-transform: none; letter-spacing: 0; }
+.table tbody td { border-bottom: 0; font-size: 16px; }
+.table tbody tr:nth-child(even) { background: var(--c-surface-alt); }
+.table tbody tr:hover { background: var(--c-primary-soft); }
+.table__ref { font-family: var(--font-mono); font-size: 13px; }
+.form-label { font-size: 16px; font-weight: 600; }
+.form-control {
+  border: 0;
+  border-bottom: 2px solid var(--c-line-strong);
+  border-radius: 0;
+  background: transparent;
+  min-height: var(--input-h);
+  font-size: 15px;
+}
+.form-control:focus { border-color: var(--c-accent); box-shadow: none; }
+.form-hint { font-size: 13px; }
+.badge { border-radius: 0 !important; font-size: 13px; letter-spacing: 0; }
+.badge::before { border-radius: 50%; }
+.stat-card { background: var(--c-surface); border: 0; border-radius: 0; box-shadow: none; }
+.stat-card__label { font-size: 13px; color: var(--c-ink-muted); }
+.stat-card__value { font-family: var(--font-display); font-size: 34px; color: var(--c-primary); }
+.counter { border-radius: 0; background: var(--c-primary); color: #fff; }
+.alert { border-radius: 0; border-inline-start-width: 4px; }
+.modal__dialog { border-radius: 0; box-shadow: var(--sh-xl); }
+.toast { border-radius: 0; }
+.timeline__item::before { border-radius: 50%; }
+.avatar, .chip, .filter-chip { border-radius: 0; }
+.avatar--sm, .avatar--lg, .avatar--xl { border-radius: 0; }
+.chip--outline { border-color: var(--c-line-strong); }
+
+/* Contact : pas d'émoji ni de filets, la lecture porte les informations */
+.contact-info-item__icon, .contact-map__pin { display: none !important; }
+.contact-info-item { border: 0 !important; padding-block: var(--sp-4); }
+.contact-info-item:nth-child(even) { background: var(--c-surface-alt); padding-inline: var(--sp-3); }
+.contact-info-item__label { font-size: 13px; color: var(--c-ink-soft); }
+.contact-form-section__subtitle, .alert__body { max-width: 62ch; }
+.contact-info-item__value { font-size: 16px; font-weight: 600; }
+.contact-map__placeholder { background: var(--c-surface-alt); }
+.contact-map__label { max-width: 60ch; }
+
+/* ---------- 8. Authentification ---------- */
+.auth-layout { min-height: 100svh; }
+.auth-visual { background: var(--c-primary) !important; color: #fff; }
+.auth-visual, .auth-visual * { color: rgba(255, 255, 255, 0.92) !important; }
+.auth-visual::before, .auth-visual::after { display: none; }
+.auth-visual__title { font-family: var(--font-display); font-size: clamp(2.5rem, 4.8vw, 4.5rem); font-weight: 700; line-height: 1.05; color: #fff !important; }
+.auth-visual__subtitle { color: rgba(255, 255, 255, 0.88) !important; font-size: 17px; }
+.auth-card { background: var(--c-surface); border: 0; border-radius: 0; box-shadow: none; }
+.auth-card__title { font-family: var(--font-display); font-size: 28px; font-weight: 700; }
+.auth-card__subtitle { color: var(--c-ink-soft); }
+.auth-card__logo { border-radius: 0; background: var(--c-primary); color: #fff; }
+.auth-footer { color: var(--c-ink-muted); font-size: 13px; }
+
+/* ---------- 9. Pied de page ---------- */
+.site-footer {
+  background: var(--c-primary);
+  color: #fff;
+  border-top: 0;
+}
+.site-footer::before { display: none; }
+.site-footer, .site-footer * { color: rgba(255, 255, 255, 0.9) !important; }
+.site-footer__col h4 { font-family: var(--font-display); font-size: 20px; color: #E2C88F !important; }
+.site-footer__col a { font-size: 16px; }
+.site-footer__col a:hover { color: #E2C88F !important; }
+.site-footer__bottom { font-size: 14px; border-top: 0; }
+
+/* ---------- 10. Mobile ---------- */
+.mobile-menu__panel { border-radius: 0; background: var(--c-surface); }
+.mobile-menu__link { border-radius: 0; font-size: 15px; }
+.mobile-menu__link[aria-current="page"] { background: var(--c-primary-soft); color: var(--c-primary); }
+@media (max-width: 700px) {
+  .hero__title { font-size: clamp(2.25rem, 9vw, 3rem); }
+  .hero__visual { aspect-ratio: 4 / 3; }
+  .hero__stats { gap: var(--sp-6); }
+  .quick-card { min-height: 140px; }
+  .app-sidebar { background: var(--c-primary); }
+  .table thead th { font-size: 12px; }
+  .form-control { font-size: 16px; }
+}
+
+/* ---------- 11. Entrées éditoriales et mouvement ---------- */
+@keyframes editorial-enter {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: none; }
+}
+.card, .stat-card, .page-header, .section-header, .hero__stat, .hero__subtitle,
+.form-group, .form-hint, .form-label, .alert, .alert__title, .auth-card,
+.auth-card__title, .auth-card__subtitle, .auth-visual__brand, .auth-visual__subtitle,
+.auth-visual__features li, .btn, .badge, .chip, .site-footer__col, .site-footer__bottom,
+.table tbody tr {
+  animation: editorial-enter 0.5s var(--ease-out) both;
+}
+.card:nth-child(2n), .stat-card:nth-child(2n), .form-group:nth-child(2n),
+.btn:nth-child(2n), .hero__stat:nth-child(2n) { animation-delay: 0.08s; }
+.card:nth-child(3n), .stat-card:nth-child(3n), .form-group:nth-child(3n),
+.btn:nth-child(3n), .hero__stat:nth-child(3n) { animation-delay: 0.16s; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+  [data-reveal] { opacity: 1 !important; transform: none !important; }
+  .card, .stat-card, .page-header, .section-header, .hero__stat, .hero__subtitle,
+  .form-group, .form-hint, .form-label, .alert, .alert__title, .auth-card,
+  .auth-card__title, .auth-card__subtitle, .auth-visual__brand, .auth-visual__subtitle,
+  .auth-visual__features li, .btn, .badge, .chip, .site-footer__col, .site-footer__bottom,
+  .table tbody tr {
+    opacity: 1 !important; transform: none !important;
+  }
+}
